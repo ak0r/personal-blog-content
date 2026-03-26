@@ -1,0 +1,9 @@
+{
+  "showLineNumber": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "/posts",
+  "attachmentFolderPath": "./attachments",
+  "newLinkFormat": "absolute",
+  "trashOption": "local",
+  "useMarkdownLinks": true
+}
