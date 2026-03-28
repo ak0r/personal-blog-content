@@ -1,0 +1,56 @@
+name: Sync to Blog
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check commit message for [sync]
+        id: check
+        run: |
+          MSG="${{ github.event.head_commit.message }}"
+          echo "Commit: $MSG"
+
+          if echo "$MSG" | grep -qE '^\[sync\]'; then
+            echo "trigger=true" >> $GITHUB_OUTPUT
+          else
+            echo "trigger=false" >> $GITHUB_OUTPUT
+            echo "No [sync] tag. Skipping."
+          fi
+
+      - name: Check for .md files changed in this push
+        id: md_check
+        if: steps.check.outputs.trigger == 'true'
+        env:
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: |
+          HAS_MD=$(echo "$COMMITS" | python3 -c "
+          import json, sys
+          commits = json.load(sys.stdin)
+          files = []
+          for c in commits:
+              files += c.get('added', [])
+              files += c.get('modified', [])
+              files += c.get('removed', [])
+          print('true' if any(f.endswith('.md') for f in files) else 'false')
+          ")
+          echo "has_md=$HAS_MD" >> $GITHUB_OUTPUT
+          echo "Has .md files: $HAS_MD"
+
+      - name: Dispatch to astro-base
+        if: |
+          steps.check.outputs.trigger == 'true' &&
+          steps.md_check.outputs.has_md == 'true'
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ASTRO_REPO_PAT }}
+          repository: ak0r/astro-base
+          event-type: vault-sync
+          client-payload: |
+            {
+              "sha": "${{ github.sha }}"
+            }
