@@ -1,0 +1,26 @@
+# Obsidian workspace (device-specific)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace
+.obsidian/cache/
+.obsidian/plugins/obsidian-git/data.json
+.trash/
+
+# Syncthing
+.stfolder
+.stignore
+.stversions/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Conflict files
+*.sync-conflict-*
