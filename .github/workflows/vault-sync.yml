@@ -10,9 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Check commit message for [sync]
         id: check
         run: |
+          # On manual trigger, skip commit message check
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "trigger=true" >> $GITHUB_OUTPUT
+            echo "Manual trigger — skipping commit message check."
+            exit 0
+          fi
+
           MSG="${{ github.event.head_commit.message }}"
           echo "Commit: $MSG"
 
@@ -29,6 +41,13 @@ jobs:
         env:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: |
+          # On manual trigger, always proceed
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "has_md=true" >> $GITHUB_OUTPUT
+            echo "Manual trigger — skipping .md check."
+            exit 0
+          fi
+
           HAS_MD=$(echo "$COMMITS" | python3 -c "
           import json, sys
           commits = json.load(sys.stdin)
@@ -49,7 +68,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.ASTRO_REPO_PAT }}
-          repository: ak0r/personal-blog
+          repository: YOUR_GITHUB_USERNAME/astro-base
           event-type: vault-sync
           client-payload: |
             {
