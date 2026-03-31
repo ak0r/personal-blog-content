@@ -10,18 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout vault
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Check commit message for [sync]
         id: check
         run: |
-          # On manual trigger, skip commit message check
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "trigger=true" >> $GITHUB_OUTPUT
-            echo "Manual trigger — skipping commit message check."
             exit 0
           fi
 
@@ -35,36 +28,8 @@ jobs:
             echo "No [sync] tag. Skipping."
           fi
 
-      - name: Check for .md files changed in this push
-        id: md_check
-        if: steps.check.outputs.trigger == 'true'
-        env:
-          COMMITS: ${{ toJson(github.event.commits) }}
-        run: |
-          # On manual trigger, always proceed
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "has_md=true" >> $GITHUB_OUTPUT
-            echo "Manual trigger — skipping .md check."
-            exit 0
-          fi
-
-          HAS_MD=$(echo "$COMMITS" | python3 -c "
-          import json, sys
-          commits = json.load(sys.stdin)
-          files = []
-          for c in commits:
-              files += c.get('added', [])
-              files += c.get('modified', [])
-              files += c.get('removed', [])
-          print('true' if any(f.endswith('.md') for f in files) else 'false')
-          ")
-          echo "has_md=$HAS_MD" >> $GITHUB_OUTPUT
-          echo "Has .md files: $HAS_MD"
-
       - name: Dispatch to astro-base
-        if: |
-          steps.check.outputs.trigger == 'true' &&
-          steps.md_check.outputs.has_md == 'true'
+        if: steps.check.outputs.trigger == 'true'
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.ASTRO_REPO_PAT }}
