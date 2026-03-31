@@ -1,13 +1,14 @@
 ---
 title: Who is Amit K?
-lastUpdated: 2026-01-07
+published: 2026-01-01
 ---
 **I'm Amit** — I work in technology and travel whenever I can manage it.
 
-During the week, I'm building and maintaining systems for a living. Currently working on workflow automation platforms, dealing with data pipelines, and making sure production environments stay stable. It's the kind of work where you solve interesting problems on good days and put out fires on bad ones.
+During the week, I'm building and maintaining systems for a living. Currently working on architecture of Specs Driven Development, dealing with data pipelines, and making sure production environments stay stable. It's the kind of work where you solve interesting problems on good days and put out fires on bad ones.
 
 Outside of work, I try to travel. Not constantly, but regularly enough to have accumulated some stories and photos. I prefer cities over resorts, nature over parties, public transport over rental cars, and getting lost in neighbourhoods over following guidebooks.
 
+![Amit K](pages/attachments/me-wide.jpg)
 ## From the Terminals
 
 I work as a Solution Architect by day, but I create my own things during off-hours. The technical content on this blog comes from the experiments I do — solutions to problems I've faced, tools I've found useful, and occasional rants about things that don't work the way they should.
