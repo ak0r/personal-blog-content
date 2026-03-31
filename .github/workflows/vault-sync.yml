@@ -68,7 +68,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.ASTRO_REPO_PAT }}
-          repository: YOUR_GITHUB_USERNAME/astro-base
+          repository: ak0r/personal-blog
           event-type: vault-sync
           client-payload: |
             {
