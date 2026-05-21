@@ -5,5 +5,7 @@
   "attachmentFolderPath": "./attachments",
   "newLinkFormat": "absolute",
   "trashOption": "local",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "alwaysUpdateLinks": true,
+  "tabSize": 2
 }

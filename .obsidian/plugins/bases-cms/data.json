@@ -1,10 +1,10 @@
 {
   "confirmBulkOperations": true,
-  "deleteParentFolder": false,
+  "deleteParentFolder": true,
   "deleteParentFolderFilename": "index",
-  "deleteUniqueAttachments": false,
+  "deleteUniqueAttachments": true,
   "confirmDeletions": true,
-  "useHomeIcon": false,
+  "useHomeIcon": true,
   "enableQuickEdit": false,
   "quickEditCommand": "",
   "quickEditCommandName": "",

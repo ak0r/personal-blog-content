@@ -1,0 +1,80 @@
+filters:
+  and:
+    - file.ext.containsAny("md", "mdx")
+views:
+  - type: cms
+    name: Travel Posts
+    filters:
+      and:
+        - category.contains("travels")
+        - file.inFolder("posts/travels")
+    sort:
+      - property: published
+        direction: DESC
+    titleProperty: note.title
+    descriptionProperty: note.description
+    imageProperty: note.cover
+    showDate: true
+    dateProperty: note.published
+    showDraftStatus: true
+    cardSize: 270
+    imageFormat: cover
+    draftStatusProperty: note.draft
+    draftStatusUseFilenamePrefix: true
+    showTags: true
+    tagsProperty: note.tags
+    propertyLabels: hide
+    propertyDisplay1: note.type
+    propertyGroup1Position: top
+    newNoteLocation: /travels/
+    fallbackToEmbeds: never
+    imagePropertyHasNested: false
+  - type: cms
+    name: Tech Posts
+    filters:
+      and:
+        - file.inFolder("posts/tech")
+        - category.contains("tech")
+    sort:
+      - property: published
+        direction: DESC
+    titleProperty: note.title
+    descriptionProperty: note.description
+    imageProperty: note.cover
+    showDate: true
+    dateProperty: note.published
+    showDraftStatus: true
+    cardSize: 270
+    imageFormat: cover
+    draftStatusProperty: note.draft
+    draftStatusUseFilenamePrefix: true
+    showTags: true
+    tagsProperty: note.tags
+    propertyLabels: hide
+    propertyDisplay1: note.type
+    propertyGroup1Position: top
+    newNoteLocation: /notes/
+  - type: cms
+    name: Pages
+    filters:
+      and:
+        - file.inFolder("pages")
+    sort:
+      - property: published
+        direction: DESC
+    titleProperty: note.title
+    descriptionProperty: note.description
+    imageProperty: note.cover
+    showDate: true
+    dateProperty: note.published
+    showDraftStatus: true
+    cardSize: 270
+    imageFormat: cover
+    draftStatusProperty: note.draft
+    draftStatusUseFilenamePrefix: true
+    showTags: true
+    tagsProperty: note.tags
+    propertyLabels: hide
+    propertyDisplay1: note.type
+    propertyGroup1Position: top
+    newNoteLocation: /travels/
