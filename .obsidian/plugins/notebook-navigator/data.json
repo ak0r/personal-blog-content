@@ -3,7 +3,7 @@
     {
       "id": "default",
       "name": "Default",
-      "fileVisibility": "supported",
+      "fileVisibility": "documents",
       "propertyKeys": [
         {
           "key": "countries",
@@ -31,19 +31,38 @@
         },
         {
           "key": "tags",
-          "showInNavigation": true,
-          "showInList": false,
-          "showInFileMenu": false
+          "showInNavigation": false,
+          "showInList": true,
+          "showInFileMenu": true
         },
         {
           "key": "theme",
           "showInNavigation": true,
           "showInList": false,
           "showInFileMenu": false
+        },
+        {
+          "key": "category",
+          "showInNavigation": true,
+          "showInList": true,
+          "showInFileMenu": true
+        },
+        {
+          "key": "draft",
+          "showInNavigation": true,
+          "showInList": true,
+          "showInFileMenu": true
+        },
+        {
+          "key": "lang",
+          "showInNavigation": true,
+          "showInList": true,
+          "showInFileMenu": true
         }
       ],
       "hiddenFolders": [
-        "_bases/*"
+        "_bases/*",
+        "_templates/*"
       ],
       "hiddenTags": [],
       "hiddenFileNames": [],
@@ -99,7 +118,8 @@
           "transitionStyle": "hue",
           "scope": "root"
         }
-      }
+      },
+      "descendantExcludedFolders": []
     }
   ],
   "vaultProfile": "default",
@@ -114,6 +134,9 @@
     "useFloatingToolbars": "synced",
     "dualPane": "synced",
     "dualPaneOrientation": "synced",
+    "narrowSidebarLayout": "synced",
+    "narrowSidebarTriggerMode": "synced",
+    "narrowSidebarCustomWidth": "synced",
     "paneTransitionDuration": "synced",
     "toolbarVisibility": "synced",
     "pinNavigationBanner": "synced",
@@ -149,6 +172,9 @@
   },
   "dualPane": false,
   "dualPaneOrientation": "horizontal",
+  "narrowSidebarLayout": "singlePane",
+  "narrowSidebarTriggerMode": "fitPanes",
+  "narrowSidebarCustomWidth": 350,
   "showTooltips": false,
   "showTooltipPath": true,
   "showTooltipWordCount": false,
@@ -168,6 +194,7 @@
     "list": {
       "back": true,
       "search": true,
+      "reveal": false,
       "descendants": true,
       "sort": true,
       "appearance": true,
@@ -188,12 +215,15 @@
   "showNoteCount": true,
   "separateNoteCounts": true,
   "showIndentGuides": false,
+  "navCountLeaderStyle": "none",
   "rootLevelSpacing": 0,
   "navIndent": 16,
   "navItemHeight": 28,
   "navItemHeightScaleText": true,
   "collapseBehavior": "all",
   "smartCollapse": true,
+  "excludeVaultRootFromCollapse": false,
+  "collapseOtherBranchesOnExpand": false,
   "autoSelectFirstFileOnFocusChange": false,
   "autoExpandNavItems": false,
   "springLoadedFolders": true,
@@ -219,7 +249,8 @@
   "enableFolderNoteLinks": true,
   "hideFolderNoteInList": true,
   "pinCreatedFolderNote": false,
-  "openFolderNotesInNewTab": false,
+  "folderNoteOpenLocation": "current-tab",
+  "showNearestFolderNoteInSidebar": true,
   "showTags": true,
   "showTagIcons": true,
   "showAllTagsFolder": true,
@@ -237,7 +268,7 @@
   "defaultListMode": "standard",
   "includeDescendantNotes": true,
   "defaultFolderSort": "modified-desc",
-  "propertySortKey": "",
+  "propertySortKey": "published",
   "propertySortSecondary": "title",
   "manualSortPropertyKey": "sort_index",
   "manualSortGroupHeaderProperty": "group_header",
@@ -248,6 +279,8 @@
   "noteGrouping": "date",
   "showSelectedNavigationPills": false,
   "stickyGroupHeaders": true,
+  "showFolderGroupPaths": true,
+  "showCurrentFolderFilesAtBottom": false,
   "filterPinnedByFolder": false,
   "compactItemHeight": 28,
   "compactItemHeightScaleText": true,
@@ -273,44 +306,48 @@
   "useFolderIconForFiles": false,
   "showFilenameMatchIcons": false,
   "fileNameIconMap": {},
-  "showCategoryIcons": false,
+  "showCategoryIcons": true,
   "fileTypeIconMap": {},
+  "fileTypeIconPreset": "none",
   "fileNameRows": 1,
   "useFolderColorForTitles": false,
-  "showFilePreview": true,
+  "showFilePreview": false,
   "skipHeadingsInPreview": true,
   "skipCodeBlocksInPreview": true,
   "stripHtmlInPreview": true,
   "stripLatexInPreview": true,
-  "previewRows": 2,
+  "previewRows": 1,
   "previewProperties": [],
   "previewPropertiesFallback": true,
   "showFeatureImage": true,
-  "featureImageProperties": [],
+  "featureImageProperties": [
+    "cover"
+  ],
   "featureImageExcludeProperties": [],
-  "featureImageSize": "64",
+  "featureImageSize": "128",
   "featureImagePixelSize": "256",
   "forceSquareFeatureImage": true,
   "downloadExternalFeatureImages": true,
-  "showFileTags": true,
+  "showFileTags": false,
   "colorFileTags": true,
   "prioritizeColoredFileTags": true,
   "showFileTagAncestors": false,
   "showFileTagsInCompactMode": false,
-  "showFileProperties": true,
+  "showFileProperties": false,
   "colorFileProperties": true,
   "prioritizeColoredFileProperties": true,
   "showFilePropertiesInCompactMode": false,
   "showPropertiesOnSeparateRows": false,
   "enablePropertyInternalLinks": true,
   "enablePropertyExternalLinks": true,
-  "showWordCount": false,
-  "wordCountPlacement": "title",
+  "textCountDisplay": "both",
+  "textCountPlacement": "title",
+  "characterCountSpaces": "include",
   "wordCountTargetProperty": "word-goal",
   "showWordCountPercentage": false,
   "showFileDate": true,
   "alphabeticalDateMode": "modified",
-  "showParentFolder": true,
+  "showParentFolder": false,
   "showParentFolderFullPath": false,
   "parentFolderClickRevealsFile": false,
   "showParentFolderColor": false,
@@ -323,6 +360,7 @@
   "calendarMonthHeadingFormat": "full",
   "calendarHighlightToday": true,
   "calendarShowFeatureImage": true,
+  "calendarShowTasks": true,
   "calendarMonthHighlights": {},
   "calendarShowWeekNumber": false,
   "calendarShowQuarter": false,
@@ -375,6 +413,12 @@
     "pane:end": [
       {
         "key": "End",
+        "modifiers": []
+      }
+    ],
+    "pane:rename": [
+      {
+        "key": "F2",
         "modifiers": []
       }
     ],
@@ -452,6 +496,22 @@
         ]
       }
     ],
+    "list:manual-sort-up": [
+      {
+        "key": "ArrowUp",
+        "modifiers": [
+          "Mod"
+        ]
+      }
+    ],
+    "list:manual-sort-down": [
+      {
+        "key": "ArrowDown",
+        "modifiers": [
+          "Mod"
+        ]
+      }
+    ],
     "list:range-to-start": [
       {
         "key": "Home",
@@ -514,9 +574,26 @@
   "propertyIcons": {},
   "propertyColors": {},
   "propertyBackgroundColors": {},
-  "propertySortOverrides": {},
+  "propertySortOverrides": {
+    "key:title": {
+      "option": "property-desc",
+      "propertyKey": "published"
+    },
+    "key:countries=india": {
+      "option": "property-desc",
+      "propertyKey": "published"
+    }
+  },
   "propertyTreeSortOverrides": {},
-  "propertyAppearances": {},
+  "propertyAppearances": {
+    "key:title": {
+      "mode": "compact",
+      "groupBy": "custom"
+    },
+    "key:countries=india": {
+      "mode": "compact"
+    }
+  },
   "virtualFolderColors": {},
   "virtualFolderBackgroundColors": {},
   "navigationSeparators": {},
@@ -542,7 +619,7 @@
     "#404040",
     "#404040"
   ],
-  "lastShownVersion": "3.0.0",
+  "lastShownVersion": "3.2.3",
   "rootFolderOrder": [],
   "rootTagOrder": [],
   "rootPropertyOrder": []
